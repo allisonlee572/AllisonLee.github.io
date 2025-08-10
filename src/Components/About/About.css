@@ -1,0 +1,327 @@
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.particle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: "none";
+}
+
+.about .sky,
+.about .mist,
+.about .mountain,
+.about .moon,
+.about .clouds,
+.about .reflection {
+  position: absolute; /* absolute means it'll be relative to wrapper */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* height: 100%; stretch to match height of .about instaed of viewport */
+  background-repeat: repeat-x;
+  /* background-size: cover; */
+  background-size: auto 100vh;
+  background-position: top-left;
+  z-index: -3; /* Ensures it's behind main content */
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /*fallback for older browsers*/
+}
+
+.about .sky {
+  background-image: url("/assets/BG/CircleNightBG.png");
+  z-index: -3;
+  /* opacity: 0.5; */
+}
+
+/* .stars {
+  background-image: url('/assets/sunsetBG/stars.png');
+  z-index: -2;
+  opacity: 0.7;
+} */
+
+.about .clouds {
+  background-image: url("/assets/BG/sunriseBG/cloud.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.about .mist {
+  background-image: url("/assets/BG/sunriseBG/mist.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.about .mountain {
+  background-image: url("/assets/BG/sunriseBG/mountain.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.about .moon {
+  background-image: url("/assets/BG/sunriseBG/moon.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Content stays on top */
+.about .main-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  /* background: linear-gradient(180deg, black 2%, rgb(48, 21, 61) 50%); */
+  /* background-color: rgb(49, 30, 4); */
+  /* background-color: black; */
+}
+
+.about-title {
+  position: relative;
+}
+
+.about-title h1 {
+  padding: 0px 30px;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+/*image will be behind title*/
+/* .about-title img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+} */
+
+/*By defalt, display:flex lays children horizontally
+which is why about-left shows on the left side
+about about-right on the right side*/
+
+.about p {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.about-sections {
+  display: flex;
+  gap: 20px;
+  /* flex-direction: column; */
+  margin: 10px 40px;
+}
+
+.about-right {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.coding-instructor {
+  /* background-color: rgba(81, 43, 43, 0.5); */
+  background-color: rgba(245, 197, 255, 0.5);
+
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.coding-instructor-info {
+  background-color: rgb(68, 55, 79);
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.gamespawn {
+  background-color: rgba(81, 43, 43, 0.5);
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.gamespawn-info {
+  background-color: rgb(68, 55, 79);
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.open-alpha {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(126, 240, 252, 0.5);
+  border-radius: 30px;
+  padding: 10px;
+  flex: 3; /*This will take up 2/3 of the row. About-right will take 1/3 of the row*/
+}
+
+.open-alpha-about {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* gap: 10px; */
+  background-color: rgb(81, 60, 60);
+  border-radius: 30px;
+  padding: 10px;
+  margin-bottom: -10px;
+}
+
+.open-alpha-roles {
+  display: flex;
+  gap: 10px;
+}
+
+.open-alpha p {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.open-alpha-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(81, 60, 60);
+
+  border-radius: 30px;
+  padding: 20px;
+  flex: 1;
+}
+.open-alpha-president {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(81, 60, 60);
+  border-radius: 30px;
+  padding: 20px;
+  flex: 1;
+}
+
+/* .about-paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 24px;
+  font-weight: 500;
+} */
+
+.about li {
+  display: flex; /*Makes each li a flex container. Its children (bullet and text) are laid out in a row in separate columns*/
+  align-items: flex-start; /*Aligns bullet and first line of text at the top*/
+  gap: 12px; /* Space between bullet and text */
+  font-size: 15px;
+  line-height: 20px;
+  text-align: left;
+  padding-left: 0;
+  list-style: none; /* Hide default bullet */
+}
+
+.about li::before {
+  content: "⬗"; /*use • as a fallback*/
+  color: #e7f3ae;
+  font-size: 20px;
+  line-height: 20px;
+  flex-shrink: 0;
+  /*Tells bullet it can not shrink if the list item gets too small - AKA keep its natural width
+  flex-shrink: 1; tells the item it can shrink if needed (and is the default)
+  */
+  margin-top: 2px; /* Adjust for vertical alignment */
+}
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-skill {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.about-skill p {
+  min-width: 150px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.about-skill hr {
+  outline: none;
+  border: none;
+  width: 50%;
+  height: 8px;
+  border-radius: 50px;
+  background: linear-gradient(270deg, #da7c25 -5%, #b923e1 100%);
+}
+
+.about-achievements {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  /* margin-bottom: 80px; */
+}
+
+.about-achievement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: 05s;
+}
+
+.about-achievement h1 {
+  font-size: 60px;
+  font-weight: 700;
+  background: linear-gradient(270deg, #da7c25 50%, #b923e1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-achievement p {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.about-skill:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.about-achievement:hover {
+  transform: scale(1.12);
+  transition: 0.5s;
+}
+
+.open-alpha-button {
+  display: inline-block;
+  padding: 15px 35px;
+  border-radius: 50px;
+  background: linear-gradient(270deg, #78acdf 50%, #4d3da4 100%);
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.open-alpha-button:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  border: 2px solid white;
+}

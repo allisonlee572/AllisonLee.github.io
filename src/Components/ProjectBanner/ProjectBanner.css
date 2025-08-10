@@ -1,0 +1,167 @@
+.banner-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  /* padding-top: 10px; */
+}
+
+/* Unified container that wraps both rectangle and triangle */
+.holo-container {
+  position: relative;
+  display: inline-block;
+  z-index: 3;
+  --color1: #79fff8;
+  --color2: rgb(138, 164, 255);
+  border-top-left-radius: 50%;
+  border-top-left-radius: 50%;
+}
+
+.holo-container::before,
+.holo-container::after {
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    var(--color1) 25%,
+    transparent 47%,
+    transparent 53%,
+    var(--color2) 75%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  background-position: 50% 50%;
+  /* mix-blend-mode: color-dodge; */
+  /*color-dodge is great for dark backgrounds*/
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+  animation: holoGradient 12s ease infinite;
+  filter: brightness(1) contrast(1.2);
+
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+
+  /* Clip to combined rectangle + triangle shape */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 60px),
+    50% 100%,
+    0% calc(100% - 60px)
+  );
+  /*for safari*/
+  -webkit-clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 60px),
+    50% 100%,
+    0% calc(100% - 60px)
+  );
+}
+
+/* Rectangle */
+.project-banner {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px 16px 0 0;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #333;
+}
+
+/* Triangle */
+.banner-triangle {
+  position: relative;
+  width: 100%;
+  height: 0;
+  border-left: 0 solid transparent;
+  border-right: 0 solid transparent;
+  border-top: 60px solid var(--theme-color);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 2;
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-banner button {
+  background-color: #908be7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.project-banner button:hover {
+  background-color: #403c92;
+}
+
+@keyframes holoGradient {
+  0%,
+  100% {
+    background-position: 50% 50%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  75% {
+    background-position: 100% 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-banner {
+    width: 100%; /* fill full width */
+    box-sizing: border-box; /* include padding in width */
+  }
+
+  .holo-container {
+    width: 100%; /* ensure parent container fills width */
+  }
+
+  .banner-wrapper {
+    width: 80%; /* make wrapper full width */
+  }
+
+  .banner-0 .project-banner {
+    width: 100%;
+    /* height: 70vh; */
+  }
+
+  .banner-1 .project-banner {
+    width: 100%;
+    /* height: 60vh; */
+  }
+  .banner-2 .project-banner {
+    width: 100%;
+    /* height: 50vh; */
+  }
+  .banner-3 .project-banner {
+    width: 100%;
+    /* height: 60vh; */
+  }
+  .banner-4 .project-banner {
+    width: 100%;
+    /* height: 70vh; */
+  }
+}

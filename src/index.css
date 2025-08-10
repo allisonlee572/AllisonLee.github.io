@@ -1,0 +1,45 @@
+/* CSS property for all elements */
+
+@font-face {
+  font-family: "Amoria";
+  src: url("./assets/fonts/Amoria.woff") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* This ensures padding and borders are included inside the element's height. */
+
+body {
+  /* height: 100vh; */
+  min-height: 100vh;
+  background: #161513;
+  color: white;
+  font-family: "outfit";
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+}
+
+/* Helpful for debugging and finding overflowing elements */
+/* * {
+  outline: 1px solid red;
+} */
+
+.title {
+  font-family:
+    "Amoria", sans-serif; /* Fallback to sans-serif if Amoria fails to load */
+  font-size: 4.5rem;
+  margin-bottom: 20px;
+}
+
+button {
+  font-family: "outfit";
+}

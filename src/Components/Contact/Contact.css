@@ -1,0 +1,183 @@
+.contact .parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  border: 2px dashed lime;
+}
+
+.contact .sky,
+.contact .mist,
+.contact .mountain,
+.contact .moon,
+.contact .clouds,
+.contact .reflection {
+  position: absolute; /* absolute means it'll be relative to wrapper */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  /* height: 100%; stretch to match height of .contact instaed of viewport */
+  background-repeat: repeat-x;
+  /* background-size: cover; */
+  background-size: auto 100vh;
+  background-position: top-left;
+  z-index: -3; /* Ensures it's behind main content */
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /*fallback for older browsers*/
+}
+
+.contact .sky {
+  background-image: url("/assets/BG/duskBG/bg.png");
+  z-index: -3;
+}
+
+/* .stars {
+  background-image: url('/assets/sunsetBG/stars.png');
+  z-index: -2;
+  opacity: 0.7;
+} */
+
+.contact .clouds {
+  background-image: url("/assets/BG/duskBG/cloud.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.contact .reflection {
+  background-image: url("/assets/BG/duskBG/reflection.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.contact .star {
+  background-image: url("/assets/BG/duskBG/star.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Content stays on top */
+.contact .main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Optional: center vertically if content is short */
+  align-items: center;
+  padding: 2rem 1rem;
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
+.contact {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-title {
+  position: relative;
+}
+
+.contact-title h1 {
+  padding: 0px 30px;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.contact-title img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.contact-section {
+  display: flex;
+  height: 60vh;
+  /* gap: 150px; */
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  /* gap: 30px; */
+}
+
+.contact-left h1 {
+  font-size: 80px;
+  font-weight: 700;
+  background: linear-gradient(270deg, #da7c25 80%, #b923e1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-left p {
+  max-width: 50%;
+  color: #d8d8d8;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: #d8d8d8;
+  font-size: 22px;
+}
+
+/* Added to control size of images */
+.contact-details img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain; /* Image maintains its aspect ratio */
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact .footer {
+  text-align: center;
+  color: #d8d8d8;
+  font-size: 18px;
+  width: 100%;
+  padding: 20px 0;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* space from bottom */
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.linkedin,
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: "bold";
+}

@@ -1,0 +1,306 @@
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.highlights .sky,
+.highlights .stars,
+.highlights .clouds,
+.highlights .reflection {
+  position: absolute; /* absolute means it'll be relative to wrapper */
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: repeat-x;
+  /* background-size: cover; */
+  background-size: auto 100vh;
+  background-position: top-left;
+  z-index: -3; /* Ensures it's behind main content */
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /*fallback for older browsers*/
+}
+
+.highlights .sky {
+  background-image: url("/assets/BG/nightBG/bg.png");
+  z-index: -3;
+}
+
+/* .stars {
+  background-image: url('/assets/sunsetBG/stars.png');
+  z-index: -2;
+  opacity: 0.7;
+} */
+
+.highlights .clouds {
+  background-image: url("/assets/BG/nightBG/cloud.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.highlights .reflection {
+  background-image: url("/assets/BG/nightBG/reflection.png");
+  /* animation: moveClouds 60s linear infinite; */
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* Content stays on top */
+.highlights .main-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  padding: 0rem 2rem;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  /* margin: 80px 170px; */
+}
+
+.highlights-title {
+  position: relative;
+}
+
+.highlights-title h1 {
+  padding: 0px 30px;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.highlights-title img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.highlights-format {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid white;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+/* .highlights-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; */
+/* fr stands for fraction */
+/* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+/* gap: 40px 30px;
+  margin-bottom: 80px;
+} */
+
+.highlights-hexagon-wrapper {
+  position: relative;
+  /*Setting position to relative makes its (absolute-positioned) 
+  children relate to the top-left corner of this instead of whole page*/
+  width: 60vw; /*60% of viewport width*/
+  height: 60vw;
+  max-width: 90vh; /* optional: don't exceed viewport height */
+  max-height: 90vh;
+  margin: 0 auto;
+}
+
+.hexagon-outline {
+  position: absolute;
+  /*Any child with position:absolute will use nearest ancesor with position: relative, absolute, fixed, or sticky
+  If no ancestor is positioned, the child will use <body> (the page) as its reference*/
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none; /*Allow mouse events to pass through SVG - so it doesn't block clicks on card*/
+}
+
+.hex-card {
+  position: absolute; /*Allows each card to be placed at specific coordinate within hexagon wrapper*/
+  width: 50%; /* Adjust to fit your ProjectCard */
+  height: 50%; /* Adjust to fit your ProjectCard */
+  z-index: 2;
+  /*Offsets card so its center is at specified left/top position (instead of top-left corner)*/
+  /*Also scales it down*/
+  transform: translate(-50%, -50%) scale(0.8); /* 0.7 = 70% size */
+}
+
+/* Place each card at a vertex of the hexagon */
+
+.hex-card-0 {
+  left: 50%;
+  top: 8%;
+}
+.hex-card-1 {
+  left: 92%;
+  top: 29%;
+}
+.hex-card-2 {
+  left: 92%;
+  top: 71%;
+}
+.hex-card-3 {
+  left: 50%;
+  top: 92%;
+}
+.hex-card-4 {
+  left: 8%;
+  top: 71%;
+}
+.hex-card-5 {
+  left: 8%;
+  top: 29%;
+}
+.highlights-format h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.highlights-format h2 {
+  font-size: 34px;
+  font-weight: 800;
+  background: linear-gradient(270deg, #da7c25 -5%, #b923e1 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlights-format p {
+  color: #d4d4d4;
+  font-size: 20px;
+  line-height: 40px;
+  max-width: 300px;
+}
+
+.highlights-readmore {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.highlights-format:hover {
+  border: 2px solid #f0f;
+  background-image: linear-gradient(45deg, #3f0028, #582300);
+  transform: scale(1.05);
+  transition: 0.4s;
+}
+
+.button-wrapper {
+  position: absolute;
+
+  /* height: 100%; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3; /* Above the hexagon and cards */
+  padding: 0; /* Remove extra padding if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  display: inline-block; /* Shrinkwraps to button size */
+  padding: 0px 0px 120px 0px; /* Space for the ring effect */
+  box-sizing: content-box; /* padding outside size of button-wrapper */
+}
+
+.button {
+  min-width: 300px;
+  min-height: 60px;
+  display: inline-flex;
+  /* font-family: 'Nunito', sans-serif; */
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4fd1c5;
+  background: linear-gradient(
+    90deg,
+    rgba(129, 230, 217, 1) 0%,
+    rgba(79, 209, 197, 1) 100%
+  );
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+
+  overflow: visible;
+}
+
+.button::before {
+  content: "";
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00ffcb;
+  box-shadow: 0 0 60px rgba(0, 255, 203, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.button:hover,
+.button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.button:hover::before,
+.button:focus::before {
+  opacity: 1;
+}
+
+.button::after {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00ffcb;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.button:hover::after,
+.button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}

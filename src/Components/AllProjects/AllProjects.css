@@ -1,0 +1,235 @@
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /*
+  Without overflow-y, the content would overflow the viewport and not be scrollable.
+  Content spills out of container if it's too big. But no scrollbars appear because we didn't tell how to handle overflow.
+
+  */
+}
+
+.all-projects .sky,
+.all-projects .stars,
+.all-projects .clouds,
+.all-projects .reflection {
+  position: fixed; /* fixed means it'll always be visible regardless of scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-repeat: repeat-x;
+  /* background-size: cover; */
+  background-size: auto 100vh;
+  background-position: top-left;
+  z-index: -3; /* Ensures it's behind main content */
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges; /*fallback for older browsers*/
+}
+
+/* Specific layers */
+.all-projects .sky {
+  background-image: url("/assets/BG/sunsetBG/bg.png");
+  z-index: -3;
+}
+
+/* .stars {
+  background-image: url('/assets/sunsetBG/stars.png');
+  z-index: -2;
+  opacity: 0.7;
+} */
+
+.all-projects .clouds {
+  background-image: url("/assets/BG/sunsetBG/cloud.png");
+  /*60 seconds to complete 1 cycle
+  linear means animation speed is constant (no acceleration or easing)
+  infinite means animation loops forever*/
+  animation: moveClouds 60s linear infinite;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.all-projects .reflection {
+  background-image: url("/assets/BG/sunsetBG/cloudreflection.png");
+  animation: moveClouds 60s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
+  top: 52vh;
+  transform: scaleY(-1);
+}
+
+@keyframes moveClouds {
+  from {
+    /*start element 50% to left of OG position (partially offscreen)*/
+    transform: translateX(-50%);
+  }
+  to {
+    /*move element back to OG position (which I'm guessing is the right of the screen)*/
+    transform: translateX(0%);
+  }
+}
+
+/* Content stays on top */
+.all-projects .main-content {
+  position: relative;
+  z-index: 1;
+  padding: 20vh 10vw;
+  color: white;
+  text-align: center;
+}
+
+.category-button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #efd7f3;
+  color: black;
+}
+
+.category-button.selected {
+  background-color: #6f62a9;
+  color: white;
+}
+
+.project-grid {
+  display: grid;
+  /*Used by CSS grid to define how many columns a container should have, and how wide each column should be
+
+    repeat(...) means to repeat a column definition multiple times
+    auto-fit means to auto figure out how many columsn fit in container
+        and collapse any empty tracksi fnot enough content (ex: use only 2 columsn if only 2 items)
+    
+        Different than auto-fill which keeps space reserved even if items are missing
+
+    minmax(280px, 1fr)
+    flexible size rule - each column must be at least 280 px wide, but can grow up to 1fr (1 fractional unit - sharing available space evently)
+  */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+  max-width: 1200px;
+  /*above is oudated: 3 cards × ~300px max width */
+  margin: 0 auto;
+  justify-content: center; /*If there's only 1 card, center it*/
+}
+
+/* New class when only one card is visible */
+.project-grid.single {
+  display: flex; /* switch from grid to flex for vertical centering */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subcategories-wrapper {
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tree-connector {
+  width: 2px;
+  height: 20px;
+  background-color: white;
+}
+
+.subcategory-buttons {
+  display: flex;
+  gap: 15px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.subcategory-buttons::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+}
+
+.subcategories-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 0.5s ease-out forwards;
+}
+
+@keyframes fadeDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tree-connector {
+  width: 2px;
+  height: 0;
+  background-color: white;
+  animation: growLine 0.5s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes growLine {
+  to {
+    height: 20px;
+  }
+}
+
+.subcategory-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  opacity: 0;
+  transform: scaleY(0.8);
+  animation: revealButtons 0.4s ease-out forwards;
+  animation-delay: 0.4s;
+  position: relative;
+}
+
+@keyframes revealButtons {
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.subcategory-buttons::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* position the line a bit above the buttons */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: white;
+  opacity: 0;
+  animation: drawBranch 0.4s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes drawBranch {
+  to {
+    opacity: 1;
+  }
+}
+
+.all-projects .footer {
+  text-align: center;
+  /* color: #d8d8d8; */
+  font-size: 20px;
+  padding: 20px 0;
+  z-index: 1;
+}
