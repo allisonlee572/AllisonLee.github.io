@@ -567,3 +567,7 @@ export default projects_data;
 // option for fullscreen (tasky images too small)
 
 // redesign the carousel arrows inside project page - ex: emberpress is hard to see
+
+// hi-key video is 67.72 MB. github's rec max file size is 50 MB
+// can compress video or upload to youtube and embed link instead
+// git LFS may be overkill
