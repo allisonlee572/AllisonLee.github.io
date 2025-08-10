@@ -8,7 +8,7 @@ import "./icons/fontawesome";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/portfolio">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allProjects" element={<AllProjects />} />
